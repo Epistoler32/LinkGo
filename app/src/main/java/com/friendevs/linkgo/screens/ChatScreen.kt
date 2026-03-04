@@ -1,6 +1,7 @@
 package com.friendevs.linkgo.screens
 
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -40,13 +41,18 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.friendevs.linkgo.R
 import com.friendevs.linkgo.model.Contacts
 import com.friendevs.linkgo.navigation.Screens
 
@@ -109,7 +115,7 @@ fun ChatScreen(navController: NavController) {
                         .fillMaxWidth()
                         .padding(10.dp)
                         .height(80.dp)
-                        .clickable(onClick = {navController.navigate(Screens.ChatDetail.name)}),
+                        .clickable(onClick = { navController.navigate(Screens.ChatDetail.name) }),
                     colors = CardDefaults.elevatedCardColors(
                         containerColor = MaterialTheme.colorScheme.surface
                     )
@@ -127,7 +133,13 @@ fun ChatScreen(navController: NavController) {
                             horizontalAlignment = Alignment.CenterHorizontally
 
                         ) {
-                            Icon(Icons.Default.Person, "Foto")
+                            Image(
+                                painter = painterResource(id = R.drawable.img),
+                                contentDescription = "Foto",
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.size(50.dp)
+                                    .clip(CircleShape)
+                            )
                         }
 
                         Column(
