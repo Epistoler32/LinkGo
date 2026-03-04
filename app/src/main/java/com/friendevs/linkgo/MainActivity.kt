@@ -15,7 +15,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            LinkGoTheme {
+            LinkGoTheme(darkTheme = true,dynamicColor = false) {
+
                     Navigation()
             }
         }
